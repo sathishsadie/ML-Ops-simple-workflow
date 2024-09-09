@@ -38,6 +38,8 @@ jobs:
           flake8 src --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
       - name: Run tests
+        env:
+          PYTHONPATH: ${{ github.workspace }}/src
         run: |
           pip install pytest
           pytest tests --maxfail=1 --disable-warnings -q

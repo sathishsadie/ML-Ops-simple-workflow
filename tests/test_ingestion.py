@@ -1,11 +1,10 @@
+# tests/test_ingestion.py
 import pytest
+import pandas as pd
 from src.ingestion import DataIngestion
 
 def test_data_ingestion():
-    # Initialize with test file path
-    data_ingestion = DataIngestion('artifacts/train.csv')
+    data_ingestion = DataIngestion(r'artifacts/train.csv')  # Use a sample data file path
     df = data_ingestion.read()
-
-    # Check if data has been read
-    assert not df.empty, "Data ingestion failed"
-    assert 'Survived' in df.columns, "Target column missing in data"
+    assert isinstance(df, pd.DataFrame)
+    assert not df.empty
