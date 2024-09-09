@@ -42,7 +42,7 @@ jobs:
           PYTHONPATH: ${{ github.workspace }}/src
         run: |
           pip install pytest
-          pytest tests --maxfail=1 --disable-warnings -q
+          pytest tests/ --maxfail=1 --disable-warnings -q
 
   deploy:
     runs-on: ubuntu-latest
