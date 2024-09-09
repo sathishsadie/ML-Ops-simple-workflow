@@ -1,7 +1,6 @@
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 import pickle
-import os
 ## Tranforming the objects that the model expected format 
 class DataTransformation:
     def __init__(self, data): ## Define the data
