@@ -1,6 +1,5 @@
 name: Python CI/CD
 
-# Controls when the action will run
 on:
   push:
     branches:
@@ -42,7 +41,7 @@ jobs:
           PYTHONPATH: ${{ github.workspace }}/src
         run: |
           pip install pytest
-          pytest tests/ --maxfail=1 --disable-warnings -q
+          pytest tests --maxfail=1 --disable-warnings -q
 
   deploy:
     runs-on: ubuntu-latest
@@ -68,5 +67,4 @@ jobs:
           DEPLOYMENT_KEY: ${{ secrets.DEPLOYMENT_KEY }}
         run: |
           echo "Deploying to server..."
-          # Example deployment command. Replace with your actual deployment commands.
           ssh -i $DEPLOYMENT_KEY user@server 'bash -s' < deploy.sh
