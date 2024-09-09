@@ -1,6 +1,6 @@
 import pandas as pd
-from transformation import DataTransformation
-from trianing import DataTraining
+from src.transformation import DataTransformation
+from src.trianing import DataTraining
 
 ## Data Ingestion phase read the data and send for the furthur process.
 class DataIngestion:
