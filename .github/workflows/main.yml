@@ -30,6 +30,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: List files
+        run: |
+          ls -R
+
       - name: Lint code with flake8
         run: |
           pip install flake8
@@ -67,4 +71,5 @@ jobs:
           DEPLOYMENT_KEY: ${{ secrets.DEPLOYMENT_KEY }}
         run: |
           echo "Deploying to server..."
+          # Example deployment command. Replace with your actual deployment commands.
           ssh -i $DEPLOYMENT_KEY user@server 'bash -s' < deploy.sh
