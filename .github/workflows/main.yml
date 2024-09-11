@@ -58,10 +58,19 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up PowerShell
-        uses: actions/setup-powershell@v2
+        uses: PowerShell/setup-powershell@v2
+        with:
+          version: '7.x'
+
+      - name: Install dependencies
+        run: |
+          echo "Installing dependencies..."
+          # Your dependency installation commands go here
 
       - name: Deploy to server
-        shell: pwsh
+        env:
+          DEPLOYMENT_KEY: ${{ secrets.DEPLOYMENT_KEY }}
         run: |
           echo "Deploying to server..."
-          .\deploy-scripts\deploy.ps1
+          # Example deployment command. Replace with your actual deployment commands.
+          ssh -i $DEPLOYMENT_KEY user@server 'bash -s' < deploy.sh
