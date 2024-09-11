@@ -19,16 +19,16 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
+          python-version: '3.11'  # Downgraded to Python 3.11 for better compatibility
 
       - name: Upgrade pip, setuptools, and wheel
         run: |
-          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install --upgrade pip
+          python -m pip install setuptools==65.5.0  # Pin setuptools to a compatible version
+          python -m pip install wheel
 
-      # Fixing numpy and pandas compatibility
-      - name: Install specific versions of numpy and pandas
+      - name: Install dependencies
         run: |
-          python -m pip install numpy==1.25.2 pandas==2.1.0
           pip install -r requirements.txt
 
       - name: List files
@@ -60,16 +60,12 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
+          python-version: '3.11'  # Use Python 3.11 here as well
 
-      - name: Upgrade pip, setuptools, and wheel
+      - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip setuptools wheel
-
-      # Fixing numpy and pandas compatibility
-      - name: Install specific versions of numpy and pandas
-        run: |
-          python -m pip install numpy==1.25.2 pandas==2.1.0
+          python -m pip install --upgrade pip
+          python -m pip install setuptools==65.5.0  # Pin setuptools again
           pip install -r requirements.txt
 
       - name: Deploy to server
