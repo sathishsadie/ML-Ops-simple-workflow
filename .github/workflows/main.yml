@@ -70,4 +70,4 @@ jobs:
           DEPLOYMENT_KEY: ${{ secrets.DEPLOYMENT_KEY }}
         run: |
           echo "Deploying to server..."
-          ssh -i $DEPLOYMENT_KEY user@server 'bash -s' < deploy.sh
+          ssh -i $DEPLOYMENT_KEY user@server 'bash -s' < deploy-scripts/deploy.sh
