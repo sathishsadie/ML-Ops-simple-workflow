@@ -8,7 +8,7 @@ class DataIngestion:
     def __init__(self,dir):
         self.dir = dir
     def read(self):
-        return pd.read_csv(os.path.join(os.path.dirname(__file__),self.dir))
+        return pd.read_csv(os.path.join(os.path.dirname(__file__)[:-4],self.dir))
 
 if __name__ == '__main__':
     data_ingestion = DataIngestion('artifacts/train.csv')
