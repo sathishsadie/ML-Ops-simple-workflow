@@ -25,8 +25,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip setuptools wheel
 
-      - name: Install dependencies
+      # Fixing numpy and pandas compatibility
+      - name: Install specific versions of numpy and pandas
         run: |
+          python -m pip install numpy==1.25.2 pandas==2.1.0
           pip install -r requirements.txt
 
       - name: List files
@@ -60,9 +62,14 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install dependencies
+      - name: Upgrade pip, setuptools, and wheel
         run: |
-          python -m pip install --upgrade pip
+          python -m pip install --upgrade pip setuptools wheel
+
+      # Fixing numpy and pandas compatibility
+      - name: Install specific versions of numpy and pandas
+        run: |
+          python -m pip install numpy==1.25.2 pandas==2.1.0
           pip install -r requirements.txt
 
       - name: Deploy to server
@@ -70,5 +77,4 @@ jobs:
           DEPLOYMENT_KEY: ${{ secrets.DEPLOYMENT_KEY }}
         run: |
           echo "Deploying to server..."
-          # Example deployment command. Replace with your actual deployment commands.
           ssh -i $DEPLOYMENT_KEY user@server 'bash -s' < deploy.sh
