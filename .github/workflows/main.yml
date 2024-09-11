@@ -57,20 +57,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'  # Use Python 3.11 here as well
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install setuptools==65.5.0  # Pin setuptools again
-          pip install -r requirements.txt
+      - name: Set up PowerShell
+        uses: actions/setup-powershell@v2
 
       - name: Deploy to server
-        env:
-          DEPLOYMENT_KEY: ${{ secrets.DEPLOYMENT_KEY }}
+        shell: pwsh
         run: |
           echo "Deploying to server..."
-          ssh -i $DEPLOYMENT_KEY user@server 'bash -s' < deploy.sh
+          .\deploy-scripts\deploy.ps1
