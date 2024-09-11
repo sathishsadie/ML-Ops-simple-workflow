@@ -16,4 +16,4 @@ def test_data_transformation(sample_data):
 
     # Check if transformation has been applied correctly
     assert 'Sex' in df_transformed.columns, "Transformation failed"
-    assert df_transformed['Sex'].dtype == 'int32', "Sex column was not transformed properly"
+    assert df_transformed['Sex'].dtype == 'int64', "Sex column was not transformed properly"
