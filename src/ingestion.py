@@ -1,13 +1,14 @@
 import pandas as pd
 from src.transformation import DataTransformation
 from src.trianing import DataTraining
+import os
 
 ## Data Ingestion phase read the data and send for the furthur process.
 class DataIngestion:
     def __init__(self,dir):
         self.dir = dir
     def read(self):
-        return pd.read_csv(self.dir)
+        return pd.read_csv(os.path.join(os.path.dirname(__file__),self.dir))
 
 if __name__ == '__main__':
     data_ingestion = DataIngestion('artifacts/train.csv')
